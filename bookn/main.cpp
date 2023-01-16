@@ -15,8 +15,6 @@ Book*	_DB()
 {
 	static Book	database;
 
-	if (!database.lst_user)
-			database.lst_user = new list<User>;
 	return (&database);
 }
 
@@ -27,22 +25,17 @@ int main()
 	User		u3("Joel");
 	Book		*database;
 
-//	u.print();
-//	u2.print();
-
 	database = _DB();
-	database->add(u);
 
-	cout << u;
-	database->lst_add(u);
-	database->lst_add(u2);
-	database->lst_add(u3);
+	database->lst_add(&u);
+	database->lst_add(&u2);
+	database->lst_add(&u3);
 
 //
 	int		input;
 	while (1)
 	{
-		cout << "[1] Create new User\n[2] View all Users\n[3] View all Requests\n[4] Exit\n";
+		cout << "-- -- -- --\n[1] Create new User\n[2] View all Users\n[3] View all Requests\n[4] Exit\n";
 		cin >> input;
 		if (input == 4)
 				break;

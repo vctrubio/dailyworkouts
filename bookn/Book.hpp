@@ -16,10 +16,9 @@ public:
 
 	User	*users[MAX_CAP];
 	void	printBook();
-	void	add(User user);
 
-	list<User>	*lst_user;
-	void		lst_add(User &user);
+	list<User*>	lst_user;
+	void		lst_add(User *user);
 };
 
 #endif
