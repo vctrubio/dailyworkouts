@@ -1,3 +1,3 @@
 all:
-	g++ *.cpp *.hpp
+	g++ *.cpp -Lmysql -lmariadbclient
 	./a.out

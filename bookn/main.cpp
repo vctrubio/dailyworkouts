@@ -1,5 +1,6 @@
 #include "User.hpp"
 #include "Book.hpp"
+#include "./mysql/mysql.h"
 
 void	create_user()
 {
