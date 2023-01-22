@@ -21,4 +21,5 @@ public:
 	void		lst_add(User *user);
 };
 
+Book*	_DB();
 #endif

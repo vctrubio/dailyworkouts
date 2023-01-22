@@ -1,19 +1,86 @@
 #include "User.hpp"
 #include "Book.hpp"
 #include "mysql/mysql.h"
+#include "Headers.hpp"
 
-struct connection_details
+
+struct SQLConnection
 {
-		const char	*server, *user, *password, *database;
+	string server, user, password, database;
+
+	SQLConnection(string server, string user, string password, string database)
+	{
+		this->server = server;
+		this->user = user;
+		this->password = password;
+		this->database = database;
+	}
 };
 
-Book*	_DB()
-{
-	static Book	database;
 
-	return (&database);
+tuple<bool, MYSQL *> sqlConnectionSetup(struct SQLConnection mysql_details)
+{
+	MYSQL	*connection = mysql_init(NULL);
+	bool	success = true;
+
+	if (!mysql_real_connect(connection, mysql_details.server.c_str(), 
+	mysql_details.user.c_str(), 
+	mysql_details.password.c_str(),
+	 mysql_details.database.c_str(), 0, NULL, 0))
+	{
+		success = false;
+		cout << "Connection Error" << mysql_error(connection) << endl;
+	}
+	return (make_tuple(success, connection));
 }
 
+int main()
+{
+	User		u("Billy");
+	User		u2("Bobby");
+	User		u3("Joel");
+	Book		*database;
+
+	database = _DB();
+
+	database->lst_add(&u);
+	database->lst_add(&u2);
+	database->lst_add(&u3);
+
+//
+	bool 		success;
+	MYSQL		*con;
+	MYSQL_ROW	row;
+
+	struct SQLConnection sqlDetails("localhost", "trtp", "password", "test");
+
+	tie(success, con) = sqlConnectionSetup(sqlDetails);
+
+	if (!success)
+	{
+		return 1;
+	}
+	else
+		cout << "WE IN\n";
+
+	int		input;
+	while (1)
+	{
+		cout << "-- -- -- --\n[1] Create new User\n[2] View all Users\n[3] View all Requests\n[4] Exit\n";
+		cin >> input;
+		if (input == 4)
+				break;
+		if (input == 1)
+				;
+		if (input == 2)
+			database->printBook();
+	}
+	cout << "OK\n";
+}
+
+
+
+/*
 MYSQL		*mysql_connection_setup(struct connection_details mysql_details)
 {
 		MYSQL	*connection;
@@ -36,64 +103,4 @@ MYSQL_RES	*mysql_execute_query(MYSQL *connection, const char *sql_query)
 	}
 	return (mysql_use_result(connection));
 }
-
-int main()
-{
-	User		u("Billy");
-	User		u2("Bobby");
-	User		u3("Joel");
-	Book		*database;
-
-	database = _DB();
-
-	database->lst_add(&u);
-	database->lst_add(&u2);
-	database->lst_add(&u3);
-
-//
-
-	MYSQL						*con;
-	MYSQL_RES					*res;
-	MYSQL_ROW					row;
-	struct connection_details	mysqlD;
-
-	mysqlD.server = "localhost";
-	mysqlD.user = "trtp";
-	mysqlD.password = "password";
-	mysqlD.database = "test";
-
-	con = mysql_connection_setup(mysqlD);
-
-    // get the results from executing commands
-    res = mysql_execute_query(con, "select * from USER;");
-
-    std::cout << ("Database Output:\n") << std::endl;
-
-    while ((row = mysql_fetch_row(res)) != NULL){
-        // the below row[] parametes may change depending on the size of the table and your objective
-        std::cout << row[0] << " | " << row[1] << " | " << row[2] << " | " << row[3] << " | " << row[4] << std::endl << std::endl;
-    }
-
-    // clean up the database result
-    mysql_free_result(res);
-    
-    // close database connection
-    mysql_close(con);
-
-
-	int		input;
-	while (1)
-	{
-		cout << "-- -- -- --\n[1] Create new User\n[2] View all Users\n[3] View all Requests\n[4] Exit\n";
-		cin >> input;
-		if (input == 4)
-				break;
-		if (input == 1)
-				;
-		if (input == 2)
-			database->printBook();
-	}
-	cout << "OK\n";
-}
-
-
+*/

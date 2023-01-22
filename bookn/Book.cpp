@@ -30,3 +30,9 @@ void	Book::printBook()
 			cout << (*itr)->print();
 }
 
+Book*	_DB()
+{
+	static Book	database;
+
+	return (&database);
+}
