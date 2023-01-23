@@ -34,6 +34,27 @@ tuple<bool, MYSQL *> sqlConnectionSetup(struct SQLConnection mysql_details)
 	return (make_tuple(success, connection));
 }
 
+auto execSQLQuery(MYSQL *connection, string query)
+{
+	struct result
+	{
+		bool		success;
+		MYSQL_RES	*res;
+	};
+
+	bool success = true;
+	if (mysql_query(connection, query.c_str()))
+	{
+		cout << "SQL Query Error" << mysql_error(connection) << endl;
+		success = false;
+	}
+
+	return result{
+		success,
+		mysql_use_result(connection)
+	};
+}
+
 int main()
 {
 	User		u("Billy");
@@ -57,11 +78,23 @@ int main()
 	tie(success, con) = sqlConnectionSetup(sqlDetails);
 
 	if (!success)
-	{
-		return 1;
-	}
+		return (1);
 	else
 		cout << "WE IN\n";
+
+	auto result = execSQLQuery(con, "Select * from User;");
+
+	if (!result.success)
+		cout << "Cannot find your query....\n";
+	else
+	{
+		while ((row = mysql_fetch_row(result.res)) != NULL)
+		{
+			cout << row[0] << " |id: " << row[1] << endl;
+		}
+	}
+	mysql_free_result(result.res); //free
+	mysql_close(con); //close connection
 
 	int		input;
 	while (1)
