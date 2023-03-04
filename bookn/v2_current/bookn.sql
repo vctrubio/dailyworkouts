@@ -24,7 +24,8 @@ CREATE TABLE trips
     trip_driver_id   int NOT NULL,
     trip_client_id   int NULL,
     trip_price       int NULL,
-    PRIMARY KEY (trip_id)
+    PRIMARY KEY (trip_id),
+    FOREIGN KEY (trip_driver_id) REFERENCES users(usr_id)
 ) ENGINE=Maria;
 #trips belongs_to trip_driver_id (user)
 
@@ -38,13 +39,13 @@ CREATE TABLE goods
     good_weight     int NULL,
     PRIMARY KEY (good_id)
 ) ENGINE=Maria;
-#good belongs_to user, has_many trips
+#good belongs_to user, has_many trips TBADDED
 
 
 #id, rating, comment #=will be used after each trip to enable feedback
 CREATE  TABLE reviews
 (
-    review_id           int NOT NULL AUTO_INCREMENT,
+    review_id          int NOT NULL AUTO_INCREMENT,
     review_rating      int NOT NULL,
     review_comment     text,
     PRIMARY KEY (review_id)
