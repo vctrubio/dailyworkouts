@@ -11,6 +11,10 @@ public:
 	Wallet(const Wallet &oldWallet);
 	Wallet& operator= (const Wallet &oldWallet);
 	~Wallet();
+
+	int		balance(){return _balance;};
+	void	deposit(int i) {_balance += i;};
+	void	transaction(int i){_balance -= i;};
 };
 
 /* to implement
