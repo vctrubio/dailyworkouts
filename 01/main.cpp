@@ -14,14 +14,12 @@ void	printMenu(void)
 int main()
 {
 	cout << "Testing: Create a Linked List, with Max Size\n";
-
 	printMenu();
 
 	User	k;
-
 	k.loop();
 
-
+	
 /*
 	cout << "---------NEXT1---------\n";
 	string name = "Ballet";
