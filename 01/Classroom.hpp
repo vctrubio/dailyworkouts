@@ -15,7 +15,7 @@ struct student
 
 class Classroom
 {
-	l&ist<student*>	front;	
+	list<student*>	front;	
 public:
 	Classroom();
 	Classroom(const Classroom &oldClassroom);
