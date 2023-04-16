@@ -1,10 +1,5 @@
 #include "Kart.hpp"
 
-Kart::Kart()
-{
-}
-
-
 Kart::Kart(const Kart &oldKart)
 {}
 
@@ -18,8 +13,7 @@ Kart::~Kart()
 
 void	Kart::add(string name)
 {
-	static int 	id = 0;
-	lst		*tmp = new lst(id++, name);
+	lst		*tmp = new lst(_counter++, name);
 
 	_items.push_back(tmp);
 }
@@ -30,7 +24,9 @@ void	Kart::del(void)
 	{
 		if (_items.empty())
 			throw runtime_error("Empty");
+		auto ptr = _items.back();
 		_items.pop_back();
+		delete ptr;
 	}
 	catch (exception &e)
 	{
@@ -49,6 +45,15 @@ void	Kart::del(int id)
 			it = _items.erase(it);
 			break;
 		}
+	}
+}
+
+void	Kart::delAll(void)
+{
+	for (it = _items.begin(); it != _items.end();)
+	{
+		delete *it;
+		it = _items.erase(it);
 	}
 }
 
@@ -81,6 +86,19 @@ void	Kart::show(int id)
 }
 
 
+/*
+void	Kart::del(int i)
+{
+	for (it = begin.begin(); it != begin.end(); it++)
+	{
+		if ((*it)->id == i)
+		{
 
-
-
+			delete *it;
+			it = _items.erase(*it);
+			return ;
+		}
+	}
+	cout << "Del not found.\n";
+}
+*/

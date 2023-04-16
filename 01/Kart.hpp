@@ -15,10 +15,11 @@ struct lst
 
 class Kart
 {
+	int 			_counter; 
 	list<lst*>			_items;	
 	list<lst*>::iterator it;
 public:
-	Kart();
+	Kart(): _counter(0){};
 	Kart(const Kart &oldKart);
 	Kart& operator= (const Kart &oldKart);
 	~Kart();
@@ -26,8 +27,10 @@ public:
 	void	add(string);
 	void	del(void);
 	void	del(int id);
+	void	delAll(void);
 	void	show(void);
 	void	show(int id);
+	
 };
 
 #endif

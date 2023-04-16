@@ -1,41 +1,43 @@
-#include "Classroom.hpp"
-#include "Classbox.hpp"
+#include "User.hpp"
 #include "Kart.hpp"
 
+
+
+void	printMenu(void)
+{
+	cout << "---------------------------------" << endl;
+	cout << "| Add X | Show X | Del X | Help |" << endl;
+	cout << "---------------------------------" << endl;
+}
+
+void	helo(void)
+{
+	cout << "Commands " << endl;
+	cout << "Add <item> WHERE item is (string)" << endl;
+	cout << "Show <id> || Show <null> " << endl;
+	cout << "Del <id> || Del <null> || DelAll " << endl;
+}
 
 int main()
 {
 	cout << "Testing: Create a Linked List, with Max Size\n";
 
+	printMenu();
 
-	Classroom test;
+	User	k;
 
-	test.add("Robert", 25, "Gay");
-	test.add("Cuntler", 25, "Gayer");
-	test.print();
-
-	cout << "---------NEXT-----------\n";
-/*
-	listNode<string> l("Michelle");
-	listNode<string> h("Hernesto");
-
-	l.next = &h;
-	cout << l.ptr << " ::\n";
-	cout << l.next->ptr << " ::\n";
-*/
-
-	cout << "---------NEXT2----------\n";
-	listNode<int> *node;
-	listNode<int> *node2 = new listNode<int>{42};
-	
-	cout << "PRINT: " << node2->ptr << endl;
-	cout << "---------NEXT3----------\n";
-	Kart	k;
-
+	cout << "---------NEXT1---------\n";
 	string name = "Ballet";
 	k.add(name);
 	k.add("BallenaBe");
+	k.add("Boner");
+	k.add("Bobby");
 	k.show();
-	k.show(1);
-	k.show(4);
+
+	cout << "---------NEXT2---------\n";
+	k.del();
+	k.delAll();
+	k.show();
+
+
 }
