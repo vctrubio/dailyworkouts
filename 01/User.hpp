@@ -3,14 +3,18 @@
 
 #include "Headers.hpp"
 #include "Kart.hpp"
+#include "Wallet.hpp"
 
 class Kart;
+class Wallet;
 
 
 class User : public Kart
 {
 	static int		counter;
 	unsigned int	_id;
+	Wallet			*wallet;
+
 public:
 	User();
 	User(const User &oldUser);

@@ -14,6 +14,8 @@ void	printMenu(void)
 int main()
 {
 	cout << "Testing: Create a Linked List, with Max Size\n";
+	cout << "|Users| have a shopping |cart| with |items|, |checkout| and interact with |wallet|\n";
+
 	printMenu();
 
 	User	k;

@@ -19,6 +19,8 @@ void	Kart::add(string name)
 	lst		*tmp = new lst(_counter++, name);
 	_items.push_back(tmp);
 
+	_price++; //for now-- items do not have price
+
 	if (_items.size() >= SIZE)
 		_checkout = true;
 }

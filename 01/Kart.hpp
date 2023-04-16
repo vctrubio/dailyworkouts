@@ -19,8 +19,10 @@ class Kart
 	list<lst*>			_items;	
 	list<lst*>::iterator it;
 	bool				_checkout;
+	int					_price;
+
 public:
-	Kart(): _counter(0), _checkout(false){};
+	Kart(): _counter(0), _price(0),_checkout(false){};
 	Kart(const Kart &oldKart);
 	Kart& operator= (const Kart &oldKart);
 	~Kart();
