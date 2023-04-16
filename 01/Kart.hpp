@@ -15,11 +15,12 @@ struct lst
 
 class Kart
 {
-	int 			_counter; 
+	int 				_counter; 
 	list<lst*>			_items;	
 	list<lst*>::iterator it;
+	bool				_checkout;
 public:
-	Kart(): _counter(0){};
+	Kart(): _counter(0), _checkout(false){};
 	Kart(const Kart &oldKart);
 	Kart& operator= (const Kart &oldKart);
 	~Kart();

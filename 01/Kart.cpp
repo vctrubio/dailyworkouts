@@ -13,15 +13,14 @@ Kart::~Kart()
 
 void	Kart::add(string name)
 {
-	if (_items.size() > SIZE)
-	{
-		cout << "MaX_SIZE Limit\n";
+	if (_checkout)
 		return ;
-	}
 
 	lst		*tmp = new lst(_counter++, name);
-
 	_items.push_back(tmp);
+
+	if (_items.size() >= SIZE)
+		_checkout = true;
 }
 
 void	Kart::del(void)
@@ -39,7 +38,6 @@ void	Kart::del(void)
 		cout << e.what() << " :expection_thrown:\n";
 	}
 }
-
 
 void	Kart::del(int id)
 {
@@ -90,21 +88,3 @@ void	Kart::show(int id)
 		cerr << e.what() << " :out_of_range\n";
 	}
 }
-
-
-/*
-void	Kart::del(int i)
-{
-	for (it = begin.begin(); it != begin.end(); it++)
-	{
-		if ((*it)->id == i)
-		{
-
-			delete *it;
-			it = _items.erase(*it);
-			return ;
-		}
-	}
-	cout << "Del not found.\n";
-}
-*/
