@@ -25,4 +25,5 @@
 
 #define SIZE 8
 
+using namespace std;
 #endif

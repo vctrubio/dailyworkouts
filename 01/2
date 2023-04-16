@@ -1,0 +1,48 @@
+#include "Kart.hpp"
+
+Kart::Kart()
+{}
+
+Kart::Kart(const Kart &oldKart)
+{}
+
+Kart& Kart::operator= (const Kart &oldKart)
+{
+	return (*this);
+}
+
+Kart::~Kart()
+{}
+
+void	Kart::add(string name)
+{
+	int static 	id = 0;
+	lst		*tmp = new lst(id, name);
+
+	_items.push_front(tmp);
+}
+
+void	Kart::del(void)
+{
+	try
+	{
+		if (_items.empty())
+			throw "Empty";
+		_items.pop_front();
+	}
+	catch (exception &e)
+		cerr << e << " :expection_thrown:\n";
+}
+
+
+void	Kart::del(int id)
+{
+	for (auto it : _items)
+	{
+		if (it->id == id)
+		{
+			_items.erase(it);
+			break;
+		}
+	}
+}

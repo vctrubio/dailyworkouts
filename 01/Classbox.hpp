@@ -2,7 +2,6 @@
 #define CLASSBOX_HPP
 
 #include "Headers.hpp"
-using namespace std;
 
 template<typename T>
 struct listNode

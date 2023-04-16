@@ -1,5 +1,6 @@
 #include "Classroom.hpp"
 #include "Classbox.hpp"
+#include "Kart.hpp"
 
 
 int main()
@@ -28,4 +29,13 @@ int main()
 	listNode<int> *node2 = new listNode<int>{42};
 	
 	cout << "PRINT: " << node2->ptr << endl;
+	cout << "---------NEXT3----------\n";
+	Kart	k;
+
+	string name = "Ballet";
+	k.add(name);
+	k.add("BallenaBe");
+	k.show();
+	k.show(1);
+	k.show(4);
 }
