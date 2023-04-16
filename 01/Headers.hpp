@@ -21,7 +21,7 @@
 #include <iomanip>
 #include <dirent.h>
 
-
+#include <sstream>
 
 #define SIZE 8
 

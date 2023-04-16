@@ -2,20 +2,13 @@
 #include "Kart.hpp"
 
 
+int User::counter = 0;
 
 void	printMenu(void)
 {
 	cout << "---------------------------------" << endl;
 	cout << "| Add X | Show X | Del X | Help |" << endl;
 	cout << "---------------------------------" << endl;
-}
-
-void	helo(void)
-{
-	cout << "Commands " << endl;
-	cout << "Add <item> WHERE item is (string)" << endl;
-	cout << "Show <id> || Show <null> " << endl;
-	cout << "Del <id> || Del <null> || DelAll " << endl;
 }
 
 int main()
@@ -26,6 +19,10 @@ int main()
 
 	User	k;
 
+	k.loop();
+
+
+/*
 	cout << "---------NEXT1---------\n";
 	string name = "Ballet";
 	k.add(name);
@@ -38,6 +35,6 @@ int main()
 	k.del();
 	k.delAll();
 	k.show();
-
+*/
 
 }

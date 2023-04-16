@@ -13,6 +13,12 @@ Kart::~Kart()
 
 void	Kart::add(string name)
 {
+	if (_items.size() > SIZE)
+	{
+		cout << "MaX_SIZE Limit\n";
+		return ;
+	}
+
 	lst		*tmp = new lst(_counter++, name);
 
 	_items.push_back(tmp);
