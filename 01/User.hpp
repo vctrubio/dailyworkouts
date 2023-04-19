@@ -21,6 +21,7 @@ public:
 	User& operator= (const User &oldUser);
 	~User();
 
+	void	testLoop(void);
 	void	loop(void);
 	void	action(vector<string>);
 };

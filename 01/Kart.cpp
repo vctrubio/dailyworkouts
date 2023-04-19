@@ -68,6 +68,8 @@ void	Kart::delAll(void)
 void	Kart::show(void)
 {
 	cout << "SHOW--\n";
+	if (_items.empty()) 
+		cout << "EMPTY\n";
 	for (it = _items.begin(); it != _items.end(); it ++)
 	{
 		cout << (*it)->id << " : " << (*it)->refStr << endl;

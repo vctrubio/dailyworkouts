@@ -86,6 +86,23 @@ void	User::action(vector<string> cmds)
 
 }
 
+void	User::testLoop(void) //gameplay loop. will exist outside user later
+{
+
+	while (1)
+	{
+		string 			line;
+		getline(cin, line);
+		
+		if (line.length() == 0)
+			continue;
+		if (line == "exit" || line == "EXIT")
+			break;
+		if (line == "1")
+			show();
+	}
+
+}
 
 void	User::loop(void)
 {
