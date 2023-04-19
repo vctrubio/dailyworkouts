@@ -25,10 +25,10 @@ int main()
 	//fetch api
 	if (!file.good())
 		me.makeCallJson();
-		
 	//parseJSON to vector<string>
 	me.initJsonParse();
 
+	
 	/*
 	User	k;
 	k.loop();

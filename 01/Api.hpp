@@ -16,8 +16,9 @@
 
 class Api
 {
-	string	_key;
-	CURL	*_curl;
+	string			_key;
+	vector<string>	_foods;
+	CURL			*_curl;
 public:
 	Api(string key): _key(key){};
 	Api(const Api &oldApi);

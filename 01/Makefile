@@ -15,7 +15,7 @@ $(PROGRAM): $(SOURCES)
 
 # Define the execution rule
 run: $(PROGRAM)
-	./$(PROGRAM) $(FILENAME)
+	./$(PROGRAM) 
 
 # Define the phony targets
 .PHONY: clean run

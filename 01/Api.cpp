@@ -18,16 +18,6 @@ size_t write_callback(char* ptr, size_t size, size_t nmemb, std::string* userdat
     return data_size;
 }
 
-
-vector<string>	Api::callRFood()
-{
-	vector<string>	search;
-
-
-	return search;
-
-}
-
 void	Api::makeCallJson()
 {
 	_curl = curl_easy_init();
@@ -87,9 +77,7 @@ void	Api::initJsonParse()
 		for (rapidjson::SizeType j = 0; j < ingredients.Size(); j++) {
 			const rapidjson::Value& ingredient = ingredients[j];
 			const std::string& name_clean = ingredient["nameClean"].GetString();
-			std::cout << "Ingredient " << j+1 << ": " << name_clean << '\n';
+			_foods.push_back(name_clean);
 		}
 	}
-
-
 }
