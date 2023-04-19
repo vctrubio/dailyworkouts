@@ -1,0 +1,1 @@
+brew install rapidjson + -I/opt/homebrew/Cellar/rapidjson/1.1.0/include 

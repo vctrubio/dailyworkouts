@@ -3,17 +3,24 @@
 
 #include "Headers.hpp"
 
-#define SECRRET 5b4a60ed8f62469e90626d523f0a53b5
+#include <curl/curl.h>
+#include <rapidjson/document.h>
+#include <rapidjson/writer.h>
+#include <rapidjson/stringbuffer.h>
+
+#define SECRET "5b4a60ed8f62469e90626d523f0a53b5"
 
 class Api
 {
 	string	_key;
+	CURL	*_curl;
 public:
 	Api(string key): _key(key){};
 	Api(const Api &oldApi);
 	Api& operator= (const Api &oldApi);
 	~Api();
 	
+	void			initCurl();
 	vector<string>	callRFood();
 };
 

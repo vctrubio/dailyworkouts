@@ -21,6 +21,8 @@ int main()
 
 	Api	me(SECRET);
 
+	me.initCurl();
+
 	/*
 	User	k;
 	k.loop();
