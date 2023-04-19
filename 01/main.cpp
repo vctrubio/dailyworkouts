@@ -19,6 +19,8 @@ int main()
 
 	printMenu();
 
+	Api	me(SECRET);
+
 	/*
 	User	k;
 	k.loop();
