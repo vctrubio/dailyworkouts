@@ -17,11 +17,17 @@ int main()
 	cout << "Testing: Create a Linked List, with Max Size\n";
 	cout << "|Users| have a shopping |cart| with |items|, |checkout| and interact with |wallet|\n";
 
-	printMenu();
+	ifstream file(FILENAME);
 
+	printMenu();
 	Api	me(SECRET);
 
-	me.initCurl();
+	//fetch api
+	if (!file.good())
+		me.makeCallJson();
+		
+	//parseJSON to vector<string>
+	me.initJsonParse();
 
 	/*
 	User	k;

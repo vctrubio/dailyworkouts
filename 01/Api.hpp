@@ -10,6 +10,10 @@
 
 #define SECRET "5b4a60ed8f62469e90626d523f0a53b5"
 
+#ifndef FILENAME
+#define FILENAME "json.txt"
+#endif
+
 class Api
 {
 	string	_key;
@@ -20,7 +24,8 @@ public:
 	Api& operator= (const Api &oldApi);
 	~Api();
 	
-	void			initCurl();
+	void			makeCallJson();
+	void			initJsonParse();
 	vector<string>	callRFood();
 };
 

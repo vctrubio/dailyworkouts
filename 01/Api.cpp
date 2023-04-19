@@ -28,8 +28,7 @@ vector<string>	Api::callRFood()
 
 }
 
-
-void	Api::initCurl()
+void	Api::makeCallJson()
 {
 	_curl = curl_easy_init();
 
@@ -53,16 +52,25 @@ void	Api::initCurl()
     }
 	curl_easy_cleanup(_curl);
 
-//	cout << "SO FAR: " << response_buffer <<endl ;;
-
-//lets write a copy of the JSON file before continue
-
-	ofstream outfile("json.txt");
-
+	ofstream outfile(FILENAME);
 	outfile << response_buffer;
 	outfile.close();
+	cout << "API call, and JSON.txt Success\n";
+}
 
-/*
+void	Api::initJsonParse()
+{
+	cout << "initJsonParse\n";
+	ifstream	jsonFile(FILENAME);
+
+	if (!jsonFile.is_open())
+	{		cerr << "Reading of jsonFile Failed\n";
+		return ;
+	}
+	string response_buffer((std::istreambuf_iterator<char>(jsonFile)),
+                                 std::istreambuf_iterator<char>());
+	jsonFile.close();
+
 	rapidjson::Document document;
 	rapidjson::ParseResult parseResult = document.Parse(response_buffer.c_str());
 
@@ -72,9 +80,16 @@ void	Api::initCurl()
 		return ;
 	}
 
-	int i = 0;
-		std::cout << "Title: " << document["recipes"][i++]["title"].GetString() << std::endl;
+	const rapidjson::Value& recipes = document["recipes"];
+	for (rapidjson::SizeType i = 0; i < recipes.Size(); i++) {
+		const rapidjson::Value& recipe = recipes[i];
+		const rapidjson::Value& ingredients = recipe["extendedIngredients"];
+		for (rapidjson::SizeType j = 0; j < ingredients.Size(); j++) {
+			const rapidjson::Value& ingredient = ingredients[j];
+			const std::string& name_clean = ingredient["nameClean"].GetString();
+			std::cout << "Ingredient " << j+1 << ": " << name_clean << '\n';
+		}
+	}
 
-*/
 
 }
