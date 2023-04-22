@@ -21,6 +21,8 @@ void	Kart::add(string name)
 
 	_price++; //for now-- items do not have price
 
+	cout << "ADDED DEGUB: " << name << endl;
+
 	if (_items.size() >= SIZE)
 		_checkout = true;
 }

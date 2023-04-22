@@ -31,7 +31,7 @@ void	threadTest(User *u)
 		me.makeCallJson();
 	//parseJSON to vector<string>
 	me.initJsonParse();
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 3; i++)
 	{
 		u->add(me.callRFood());
 		usleep(5000000);

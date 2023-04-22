@@ -98,7 +98,7 @@ void	User::testLoop(void) //gameplay loop. will exist outside user later
 			continue;
 		if (line == "exit" || line == "EXIT")
 			break;
-		if (line == "1")
+		if (line == "1" || line == "Show")
 			show();
 	}
 
