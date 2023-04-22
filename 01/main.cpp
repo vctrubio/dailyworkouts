@@ -23,17 +23,6 @@ void	init(User *user, ifstream &file)
 
 void	threadTest(User *u)
 {
-
-	usleep(5000000);
-	cout << "Finished ThreadTest\n";
-}
-
-int main()
-{
-	cout << "Testing: Create a Linked List, with Max Size\n";
-	cout << "|Users| have a shopping |cart| with |items|, |checkout| and interact with |wallet|\n";
-	printMenu();
-
 	ifstream file(FILENAME);
 	Api	me(SECRET);
 
@@ -42,7 +31,22 @@ int main()
 		me.makeCallJson();
 	//parseJSON to vector<string>
 	me.initJsonParse();
+	for (int i = 0; i < 5; i++)
+	{
+		u->add(me.callRFood());
+		usleep(5000000);
+		cout << "Looped ThreadTest\n";
+	}
 
+	cout << "FINITO ThreadTest\n";
+	file.close();
+}
+
+int main()
+{
+	cout << "Testing: Create a Linked List, with Max Size\n";
+	cout << "|Users| have a shopping |cart| with |items|, |checkout| and interact with |wallet|\n";
+	printMenu();
 	
 	User	*u = new User();
 	thread testing(threadTest, u);
@@ -51,10 +55,8 @@ int main()
 	u->testLoop();
 
 	delete u;
+}
 
-
-//	k.loop();
-	
 /*
 	cout << "---------NEXT1---------\n";
 	string name = "Ballet";
@@ -69,5 +71,3 @@ int main()
 	k.delAll();
 	k.show();
 */
-
-}

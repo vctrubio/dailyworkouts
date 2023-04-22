@@ -1,2 +1,0 @@
-
-std::make_unique to create a new std::unique_ptr and initialize the student object it owns with the given arguments. We then move the std::unique_ptr into the students list using std::list::push_front.

@@ -81,3 +81,11 @@ void	Api::initJsonParse()
 		}
 	}
 }
+
+string	Api::callRFood()
+{
+	string	tmp = _foods.front();
+	_foods.erase(_foods.begin());
+
+	return tmp;
+}

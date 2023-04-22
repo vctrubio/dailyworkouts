@@ -27,7 +27,7 @@ public:
 	
 	void			makeCallJson();
 	void			initJsonParse();
-	vector<string>	callRFood();
+	string			callRFood();
 };
 
 #endif
