@@ -37,7 +37,6 @@ void	threadTest(User *u)
 		usleep(5000000);
 		cout << "Looped ThreadTest\n";
 	}
-
 	cout << "FINITO ThreadTest\n";
 	file.close();
 }
