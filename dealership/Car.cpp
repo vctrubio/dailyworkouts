@@ -2,7 +2,6 @@
 
 Car::Car(string model, unsigned int price):_model(model), _price(price), _brand(MERCEDES) 
 {
-
 }
 
 Car::~Car()

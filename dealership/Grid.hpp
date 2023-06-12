@@ -6,16 +6,18 @@
 
 class Grid
 {
-	Car*			_cars[6][6];
 	list<Car*>		_inventory;
 public:
-	Grid();
-	~Grid();
+	Grid(){};
+	~Grid(){};
 	void	loop();
 	int		totalV(){return 1;};
 	void	add();
 	void	show();
+	void	grid();
 	void	addAlgo(Car *car);
 };
+
+void printGrid(Car* cars[HEIGHT][WIDTH]);
 
 #endif
