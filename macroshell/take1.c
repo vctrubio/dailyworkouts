@@ -13,11 +13,11 @@ int	putstr(char *s1, char *s2)
 	return 1;
 }
 
-int	exc(char **av, int i, int tmp_fd, char **ev)
+int	exc(char **av, int i, int fd, char **ev)
 {
 	av[i] = NULL;
-	dup2(tmp_fd, STDIN_FILENO);
-	close(tmp_fd);
+	dup2(fd, STDIN_FILENO);
+	close(fd);
 	execve(av[0], av, ev);
 	return (putstr("error:: cannot execute ", av[0]));
 }
@@ -81,9 +81,6 @@ int main(int ac, char **av, char **ev)
 			}
 		}
 	}
-
-
-
 	close(tmpFd);
 	return 0;
 }
