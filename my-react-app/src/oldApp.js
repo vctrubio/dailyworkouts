@@ -22,4 +22,56 @@ function App2() {
   );
 }
 
-export default App;
+
+/*
+function App() {
+  return (
+	<div className="App">
+	  <body className="App-header">
+		<p>
+		 Hello Tano
+		</p>
+	  </body>
+	</div>
+  );
+}
+*/
+
+function Person() {
+	return (
+		<>
+			<h1>Name: Johno</h1>
+			<h2>Age: 35</h2>
+		</>
+
+	)
+}
+
+export default function App3() {
+	let count = 0;
+
+	const [counter, setCounter] = useState(24);
+
+	return (
+		<div className="App">
+			<h1>
+				Hello {counter} !
+			</h1>
+			<br></br>
+			<button onClick={() => setCounter((i) => --i)}>
+				-
+			</button>
+			<button onClick={() => setCounter((i) => ++i)}>
+			+</button>
+
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<br></br>
+			<Person/>
+		</div>
+	);
+
+}
+
