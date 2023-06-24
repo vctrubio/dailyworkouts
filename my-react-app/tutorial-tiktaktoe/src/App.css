@@ -1,4 +1,4 @@
-.square {
+.square{
   color: black;
   background-color: aqua;
   width: 60px;
@@ -7,9 +7,29 @@
   justify-content: center;
 }
 
+.flexy{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.box{
+  outline-color: blanchedalmond;
+  outline-style: solid;
+  width: 12px;
+  height: 120px;
+  color: red;
+  background-color: black;
+}
 
-
+.inline{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  >*{
+    margin: 10px;
+  }
+}
 
 
 

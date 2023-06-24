@@ -1,22 +1,19 @@
 import './App.css';
 
-import Board from './Board';
+// import Board from './Board';
+import Box from './Box';
 
-/*
-function Square(value, onSquareClick)
-function Board(xisNext, square, onPlay)
-function CalculateWinner()
-export function Game()
-*/
 
 export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Hello tikitaktoe
-        </p>
-        <Board/>
+        <div className='inline'>
+          <p>
+            Hello tikitaktoe
+          </p>
+          <Box />
+        </div>
       </header>
     </div>
   );

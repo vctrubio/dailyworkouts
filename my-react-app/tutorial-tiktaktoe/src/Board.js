@@ -1,6 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 
+
 function Square({ value, onSquareClick }) {
 
     return (
@@ -25,7 +26,7 @@ function calculateWinner(squares) {
 
     for (let i = 0; i < possibilities.length; i++) {
         const [a, b, c] = possibilities[i];
-        if (squares[a] && squares[a] === squares[b] && squares[a] == squares[c])
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c])
             return (squares[a]);
     }
     return null;
@@ -35,6 +36,7 @@ function calculateWinner(squares) {
 export default function Board() {
     const [xisNext, setXIsNext] = useState(true);
     const [squares, setSquares] = useState(Array(9).fill(null));
+    
 
     const winner = calculateWinner(squares);
     let status;
