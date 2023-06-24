@@ -1,16 +1,17 @@
 import './App.css';
+import { useState } from 'react';
 
 function Square({ arg }) {
-    function handleClick() {
+    const [value, setValue] = useState(null);
+
+    function handleBitch() {
         console.log('clicked ', arg);
+        setValue(value === 'X' ? '': 'X');
     }
 
     return (
-        <button 
-            className='square'
-            onClick={handleClick}
-        >
-            {arg}
+        <button className='square'onClick={handleBitch}>
+            {value}
         </button>
 
     );
@@ -21,7 +22,7 @@ export default function Board() {
         <>
             <div>
                 <Square arg={1} />
-                <Square arg={2} />
+                <Square  />
                 <Square arg={3} />
             </div>
             <div>
