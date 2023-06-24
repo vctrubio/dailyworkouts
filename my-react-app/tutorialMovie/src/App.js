@@ -14,7 +14,7 @@ const API_URL = 'http://www.omdbapi.com?apikey=fca8be50';
 // }
 
 export default function App() {
-
+	// constructor() => {};
 	const [movies, setMovies] = useState([]);
 	const [searchTerm, setSearchTerm] = useState(["henanash"]);
 
