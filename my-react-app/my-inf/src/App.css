@@ -35,3 +35,9 @@ body {
   scroll-snap-align: start;
   border: 1px solid black;
 }
+
+@media (max-width: 768px) {
+  .Page {
+    font-size: 18px;
+  }
+}
