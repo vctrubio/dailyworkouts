@@ -17,7 +17,7 @@ export default function NavBar() {
     };
 
     return (
-        <div className={`Nav ${isHovered ? 'hovered' : ''}`}
+        <div id="idNav" className={`Nav ${isHovered ? 'hovered' : ''}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={handleDivClick}
