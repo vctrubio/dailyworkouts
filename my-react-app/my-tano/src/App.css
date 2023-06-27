@@ -54,7 +54,11 @@
   >* {
     border: 1px dotted black;
     margin: 4px;
+    padding: 4px;
     height: 50vh;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    font-weight: bold;
   }
 }
 
@@ -63,7 +67,7 @@
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: larger;
   font-weight: bold;
-  width: 50vw;
+  width: 50%;
 }
 
 .Main {
