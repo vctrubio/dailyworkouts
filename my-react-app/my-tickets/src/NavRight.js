@@ -9,7 +9,7 @@ export default function RightN(props)
 
     return (
         <>
-        {price};
+        {price}
         </>
     )
 };

@@ -20,7 +20,6 @@ export default function Card(props) {
         };
       }, [total, updatePrice]);
 
-
     return (
         <>
             <div className='Card'>

@@ -19,12 +19,10 @@ export default function Content() {
     };
 
     const updatePrice=(value, operation) =>{
-        console.log("clicked", value, operation);
         if (operation == '+')
             setTotalIncome((prevIncome) => prevIncome + value);
         else if (operation == '-')
             setTotalIncome((prevIncome) => prevIncome - value);
-
     };
 
     const handleDelete = (index, price) => {
