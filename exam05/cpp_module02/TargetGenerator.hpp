@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 #include "ATarget.hpp"
 
 #include <map>
@@ -20,5 +18,6 @@ class TargetGenerator : public ATarget
     void learnTargetType(ATarget *target);
     void forgetTargetType(string const &target);
     ATarget *createTarget(string const &target);
+    ATarget *clone() const; //IF i dont have this it wont compile
 };
 

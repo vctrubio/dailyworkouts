@@ -1,17 +1,18 @@
-#include "TargetGenerator.hpp"
+#include "SpellBook.hpp"
 
-TargetGenerator::TargetGenerator()
-{}
+SpellBook::SpellBook() {}
 
-TargetGenerator::~TargetGenerator() {
+SpellBook::~SpellBook()
+{
     for (it = _map.begin(); it != _map.end();)
     {
         delete it->second;
+        it = _map.erase(it);
     }
     _map.clear();
 }
 
-bool    TargetGenerator::exist(string const &spell)
+bool SpellBook::exist(string const &spell)
 {
     if (_map.empty())
         return false;
@@ -23,22 +24,26 @@ bool    TargetGenerator::exist(string const &spell)
     return false;
 }
 
-void TargetGenerator::learnTargetType(ATarget *spell) {
-    if (spell && !exist(spell->getType()))
-        _map.insert(make_pair(spell->getType(), spell->clone()));
+void SpellBook::learnSpell(ASpell *spell)
+{
+    if (spell && !exist(spell->getName()))
+        _map.insert(make_pair(spell->getName(), spell->clone()));
 }
 
-void TargetGenerator::forgetTargetType(string const &spell) {
+void SpellBook::forgetSpell(string const &spell)
+{
     if (_map.empty())
-        return ;
+        return;
     it = _map.find(spell);
-    if (it!=  _map.end()){
+    if (it != _map.end())
+    {
         delete it->second;
     }
     _map.erase(spell);
 }
 
-ATarget *TargetGenerator::createTarget(string const &spell) {
+ASpell *SpellBook::createSpell(string const &spell)
+{
     it = _map.find(spell);
     if (it != _map.end())
         return _map[spell];
