@@ -1,6 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
-import LeftN from './NavLeft';
+import React, { useState, useMemo } from 'react';
 import RightN from './NavRight';
 import Card from './Card';
 
@@ -8,6 +7,21 @@ export default function Content() {
     const [inputValue, setInputValue] = useState('');
     const [dataArray, setDataArray] = useState([]);
     const [totalIncome, setTotalIncome] = useState(0);
+    const [currentDate, setCurrentDate] = useState(new Date());
+
+    const parser = useMemo(() => {
+        return currentDate.toLocaleDateString('es-ES', { year: 'numeric', day: '2-digit', month: '2-digit' }).slice(0, -5);
+      }, [currentDate]);
+    
+
+    const handleDate = (i) => {
+        const newDate = new Date(currentDate);
+        if (i === '-')
+            newDate.setDate(newDate.getDate() - 1);
+        else if (i === '+')
+            newDate.setDate(newDate.getDate() + 1);
+        setCurrentDate(newDate);
+    };
 
     const handleChange = (e) => {
         const value = e.target.value;
@@ -18,10 +32,10 @@ export default function Content() {
         }
     };
 
-    const updatePrice=(value, operation) =>{
-        if (operation == '+')
+    const updatePrice = (value, operation) => {
+        if (operation === '+')
             setTotalIncome((prevIncome) => prevIncome + value);
-        else if (operation == '-')
+        else if (operation === '-')
             setTotalIncome((prevIncome) => prevIncome - value);
     };
 
@@ -30,33 +44,37 @@ export default function Content() {
         updatePrice(price, '-');
     };
 
-    const createDiv = (a, b) => {
-        let tmp = 0;
+    const createDiv = (a, b, date) => {
+        console.log(date);
         return (
-          <div key={a} id="inputRow">
-            <Card content={b} date="11.06" handleDelete={() => handleDelete(a, tmp)} updatePrice={updatePrice} index={a}/>
-          </div>
+            <div key={a} id="inputRow">
+                <Card content={b} date={date} handleDelete={() => handleDelete(a, 0)} updatePrice={updatePrice} index={a} />
+            </div>
         );
-      };
+    };
 
     return (
         <>
             <div className='Content'>
                 <div className='Wrapper'>
-                    <LeftN />
+                    <div className='Time'>
+                        <button onClick={() => handleDate('-')}>-</button>
+                        {parser}
+                        <button onClick={() => handleDate('+')}>+</button>
+                    </div>
                     <div id="inputText">
                         <input type="text" id="inputParam" placeholder="HR TITLE €" value={inputValue} onChange={handleChange} onKeyDown={handleChange} />
                     </div>
-                    <RightN price={totalIncome}/>
+                    <RightN price={totalIncome} />
                 </div>
                 <div>
-                    {dataArray.map((item, index) => 
-                    createDiv(index, item) )}
-                </div>
+                    {dataArray.map((item, index) =>
+                        createDiv(index, item, parser))}
+                        </div>
 
             </div>
         </>
     );
 }
 
-//content needs to be sorted by date in ASC/DES
+
