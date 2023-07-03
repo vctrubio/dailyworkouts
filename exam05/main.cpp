@@ -31,4 +31,4 @@ int main()
 }
 
 //g++ -g ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp Warlock.cpp main.cpp BrickWall.cpp Fireball.cpp SpellBook.cpp TargetGenerator.cpp Polymorph.cpp 
-//wont compile
+//passes the main, but the traces or no good
