@@ -1,0 +1,1 @@
+ g++ ASpell.cpp ATarget.cpp Warlock.cpp main.cpp Fwoosh.cpp Dummy.cpp TargetGenerator.cpp Polymorph.cpp BrickWall.cpp SpellBook.cpp Fireball.cpp  -Wall -Wextra -Werror && ./a.out

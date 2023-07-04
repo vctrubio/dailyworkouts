@@ -1,18 +1,22 @@
 #include "SpellBook.hpp"
 
-SpellBook::SpellBook() {}
+SpellBook::SpellBook()
+{
+}
 
 SpellBook::~SpellBook()
 {
-    for (it = _map.begin(); it != _map.end();)
+    std::map<std::string, ASpell *>::iterator it_begin = this->_map.begin();
+    std::map<std::string, ASpell *>::iterator it_end = this->_map.end();
+    while (it_begin != it_end)
     {
-        delete it->second;
-        it = _map.erase(it);
+        delete it_begin->second;
+        ++it_begin;
     }
-    _map.clear();
+    this->_map.clear();
 }
 
-bool SpellBook::exist(string const &spell)
+bool SpellBook::exist(string spell)
 {
     if (_map.empty())
         return false;
@@ -27,22 +31,19 @@ bool SpellBook::exist(string const &spell)
 void SpellBook::learnSpell(ASpell *spell)
 {
     if (spell && !exist(spell->getName()))
-        _map.insert(make_pair(spell->getName(), spell->clone()));
+        _map.insert(pair<string, ASpell *>(spell->getName(), spell->clone()));
 }
 
 void SpellBook::forgetSpell(string const &spell)
 {
-    if (_map.empty())
-        return;
-    it = _map.find(spell);
-    if (it != _map.end())
-    {
-        delete it->second;
-    }
-    _map.erase(spell);
+
+        it = _map.find(spell);
+        if (it != _map.end())
+            delete it->second;
+        _map.erase(spell);
 }
 
-ASpell *SpellBook::createSpell(string const &spell)
+ASpell* SpellBook::createSpell(string const &spell)
 {
     it = _map.find(spell);
     if (it != _map.end())

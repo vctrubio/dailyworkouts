@@ -1,15 +1,15 @@
 #pragma once
 
 #include <iostream>
+using namespace std;
 
 #include "ASpell.hpp"
 
-class Fireball : public ASpell 
+class Fireball : public ASpell
 {
-    public:
+public:
     Fireball();
     ~Fireball();
-
-    Fireball *clone() const;
+    
+    virtual ASpell *clone() const;
 };
-

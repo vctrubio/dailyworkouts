@@ -5,7 +5,9 @@
 #include "Polymorph.hpp"
 #include "TargetGenerator.hpp"
 #include "Fireball.hpp"
-
+#include "ATarget.hpp"
+#include "ASpell.hpp"
+#include "SpellBook.hpp"
 
 int main()
 {
@@ -28,7 +30,5 @@ int main()
   richard.introduce();
   richard.launchSpell("Polymorph", *wall);
   richard.launchSpell("Fireball", *wall);
+  // delete polymorph;
 }
-
-//g++ -g ASpell.cpp ATarget.cpp Dummy.cpp Fwoosh.cpp Warlock.cpp main.cpp BrickWall.cpp Fireball.cpp SpellBook.cpp TargetGenerator.cpp Polymorph.cpp 
-//passes the main, but the traces or no good

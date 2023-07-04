@@ -1,21 +1,20 @@
 #include "TargetGenerator.hpp"
 
-TargetGenerator::TargetGenerator()
-{
-}
+TargetGenerator::TargetGenerator() {}
 
 TargetGenerator::~TargetGenerator()
 {
-    if (_map.empty())
-        return;
-    for (it = _map.begin(); it != _map.end();)
+    std::map<std::string, ATarget *>::iterator it_begin = this->_map.begin();
+    std::map<std::string, ATarget *>::iterator it_end = this->_map.end();
+    while (it_begin != it_end)
     {
-        delete it->second;
-        it = _map.erase(it);
+        delete it_begin->second;
+        ++it_begin;
     }
+    this->_map.clear();
 }
 
-bool TargetGenerator::exist(string const &spell)
+bool TargetGenerator::exist(string spell)
 {
     if (_map.empty())
         return false;
@@ -27,33 +26,21 @@ bool TargetGenerator::exist(string const &spell)
     return false;
 }
 
-void TargetGenerator::learnTargetType(ATarget *spell)
+void TargetGenerator::learnTargetType(ATarget* spell_ptr)
 {
-    if (spell && !exist(spell->getType()))
-        _map.insert(make_pair(spell->getType(), spell->clone()));
+    if (spell_ptr)
+        _map.insert(std::pair<std::string, ATarget *>(spell_ptr->getType(), spell_ptr->clone()));
 }
 
-void TargetGenerator::forgetTargetType(string const &spell)
+void TargetGenerator::forgetTargetType(std::string const &spell_name)
 {
-    if (_map.empty())
-        return;
-    it = _map.find(spell);
-    if (it != _map.end())
-    {
-        delete it->second;
-    }
-    _map.erase(spell);
+    _map.erase(spell_name);
 }
 
-ATarget *TargetGenerator::createTarget(string const &spell)
+ATarget* TargetGenerator::createTarget(std::string const &spell_name)
 {
-    it = _map.find(spell);
+    std::map<std::string, ATarget *>::iterator it = _map.find(spell_name);
     if (it != _map.end())
-        return _map[spell];
+        return _map[spell_name];
     return NULL;
 }
-
-ATarget *TargetGenerator::clone() const
-{
-    return new TargetGenerator;
-};

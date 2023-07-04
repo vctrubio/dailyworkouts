@@ -1,15 +1,15 @@
 #pragma once
 
 #include <iostream>
+using namespace std;
 
 #include "ASpell.hpp"
 
-class Fwoosh : public ASpell 
+class Fwoosh : public ASpell
 {
-    public:
+public:
     Fwoosh();
     ~Fwoosh();
-
-    Fwoosh *clone() const;
+    
+    virtual ASpell *clone() const;
 };
-
