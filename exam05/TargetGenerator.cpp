@@ -34,7 +34,11 @@ void TargetGenerator::learnTargetType(ATarget* spell_ptr)
 
 void TargetGenerator::forgetTargetType(std::string const &spell_name)
 {
-    _map.erase(spell_name);
+    if (exist(spell_name))
+    {
+        delete _map[spell_name];
+        _map.erase(spell_name);
+    }
 }
 
 ATarget* TargetGenerator::createTarget(std::string const &spell_name)
