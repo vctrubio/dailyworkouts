@@ -27,6 +27,20 @@ def ex02():
 
     print("final sum: ", splat(*lst))
 
+#run timing
+def ex03():
+    ui = []
+
+    while True:
+        inpt = input('input>')
+        if len(inpt) == 0:
+            break
+        ui.append(ui)
+   
+    for i in ui:
+        print(i)
+    print(f'Average of {ui}, over runs')
+
 
 if __name__ == '__main__':
     try:
