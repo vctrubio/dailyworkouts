@@ -13,8 +13,19 @@ def ex01():
         else:
             print('lower')
     print('ex01 complete; random_number = ', number)
-       
+    
+#mysum via de splat operator (*)
+def ex02():
+    ui = input("what is your input: only numbers please: ")
+    lst = [int(i) for i in ui.split()]
+    
+    def splat(*lst):
+        final_sum = 0
+        for i in lst:
+            final_sum += i
+        return final_sum
 
+    print("final sum: ", splat(*lst))
 
 
 if __name__ == '__main__':
