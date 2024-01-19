@@ -33,13 +33,20 @@ def ex03():
 
     while True:
         inpt = input('input>')
-        if len(inpt) == 0:
+        if not inpt:
             break
-        ui.append(ui)
-   
-    for i in ui:
-        print(i)
-    print(f'Average of {ui}, over runs')
+        ui.append(int(inpt))
+  
+    avg = sum(ui) / len(ui)
+    print(f'Average of {avg}, over {len(ui)} runs')
+
+#hex transformation
+def ex04():
+    num = 0
+    ui = input('input: what is your hex number: ')
+    for power, digit in enumerate(reversed(ui)):
+        num += int(digit, 16) * (16 ** power)
+    print(f'{ui} -> {num}')
 
 
 if __name__ == '__main__':
