@@ -24,7 +24,6 @@ def ex02():
         for i in lst:
             final_sum += i
         return final_sum
-
     print("final sum: ", splat(*lst))
 
 #run timing
@@ -36,7 +35,6 @@ def ex03():
         if not inpt:
             break
         ui.append(int(inpt))
-  
     avg = sum(ui) / len(ui)
     print(f'Average of {avg}, over {len(ui)} runs')
 
