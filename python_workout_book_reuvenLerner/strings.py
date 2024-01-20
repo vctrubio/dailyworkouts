@@ -11,7 +11,7 @@ def ex05():
         let = ui[0:1]
         mod += let
         mod += 'ay'
-    print(mod)
+    print(mo[::[::2]])
 
 
 
