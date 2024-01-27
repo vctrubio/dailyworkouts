@@ -39,3 +39,21 @@ def ex15():
     for i in rainfall:
         print(i, rainfall[i])
 
+#dictdiff
+def ex16():
+
+    def dicdiff(d1, d2):
+        output = {}
+        d1_keys = d1.keys()
+        d2_keys = d2.keys()
+        d3 = d1_keys | d2_keys
+        for d in d3:
+            if d1.get(d) != d2.get(d):
+                output[d] = [d1.get(d), d2.get(d)]
+        return output
+
+    d1 = {'a':1, 'i':6, 'b':2, 'c':3}
+    d2 = {'a':1, 'b':2, 'c':4}
+    print(dicdiff(d1, d2))
+
+    return 
