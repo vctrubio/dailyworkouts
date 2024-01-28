@@ -56,4 +56,9 @@ def ex16():
     d2 = {'a':1, 'b':2, 'c':4}
     print(dicdiff(d1, d2))
 
-    return 
+
+#diff in numbers
+def ex17():
+    numbers = [1, 2, 3, 1, 2, 3, 4, 1]
+    print(len(set(numbers)))
+
