@@ -83,6 +83,20 @@ def ex23():
             print(f'\taverage {average_score}')
    
 
+#reverse lines
+def ex24():
+    def line(l):
+        mysplit = l.split()
+        mysplit = mysplit[::-1]
+        rtn = []
+        for i in mysplit:
+            rtn.append(i[::-1])
+        print(rtn)
+
+    line('hello you are you')
+
+
+
 if __name__ == '__main__':
     try:
         if len(sys.argv) < 2:
